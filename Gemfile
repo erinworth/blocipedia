@@ -21,6 +21,7 @@ end
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
+  gem 'faker'
 end
 
 # Use Puma as the app server
@@ -43,7 +44,8 @@ gem 'bootstrap-sass'
 
 gem 'devise'
 
-gem "pundit"
+gem 'pundit'
+
 
 group :development do
   gem 'listen', '~> 3.0.5'
