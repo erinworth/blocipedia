@@ -1,18 +1,20 @@
 class WikisController < ApplicationController
+
   def index
     @wikis = Wiki.all
+    @public_wikis = @wikis.select { |wiki| wiki.private == false }
     authorize @wikis
   end
 
   def show
     @wiki = Wiki.find(params[:id])
-    authorize @wikis
+    authorize @wiki
   end
 
   def new
     @wiki = Wiki.new
     @wiki.user = current_user
-    authorize @wikis
+    authorize @wiki
   end
 
   def create
@@ -20,8 +22,8 @@ class WikisController < ApplicationController
     @wiki.title = params[:wiki][:title]
     @wiki.body = params[:wiki][:body]
     @wiki.user = current_user
-    authorize @wikis
-
+    @wiki.private = params[:wiki][:private]
+    authorize @wiki
     if @wiki.save
       flash[:notice] = "Wiki was saved."
       redirect_to @wiki
@@ -33,14 +35,15 @@ class WikisController < ApplicationController
 
   def edit
     @wiki = Wiki.find(params[:id])
-    authorize @wikis
+    authorize @wiki
   end
 
   def update
     @wiki = Wiki.find(params[:id])
     @wiki.title = params[:wiki][:title]
     @wiki.body = params[:wiki][:body]
-    authorize @wikis
+    @wiki.private = params[:wiki][:private]
+    authorize @wiki
 
     if @wiki.save
       flash[:notice] = "Wiki was updated."
@@ -53,8 +56,7 @@ class WikisController < ApplicationController
 
   def destroy
     @wiki = Wiki.find(params[:id])
-    authorize @wikis
-
+    authorize @wiki
     if @wiki.destroy
       flash[:notice] = "\"#{@wiki.title}\" was deleted successfully."
       redirect_to wikis_path
@@ -63,4 +65,7 @@ class WikisController < ApplicationController
       render :show
     end
   end
+
+
+
 end

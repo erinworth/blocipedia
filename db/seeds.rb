@@ -10,15 +10,15 @@
 
 50.times do
   Wiki.create!(
-    title: Faker::Lorem.sentence,
-    body: Faker::Lorem.paragraph
+    title: Faker::Hipster.sentence,
+    body: Faker::Hipster.paragraph
   )
   end
   wikis = Wiki.all
 
 10.times do
   User.create!(
-    name: Faker::Name.unique.name,
+    name: Faker::Name.name,
     email: Faker::Internet.unique.email,
     password: Faker::Lorem.characters(6)
   )

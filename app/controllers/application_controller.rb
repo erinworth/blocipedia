@@ -18,6 +18,7 @@ private
 
   def downgrade_current_user
     current_user.update_attributes(:role => "standard")
+    current_user.wikis.update_all(:private => "false")
   end
 
 end
