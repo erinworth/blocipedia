@@ -5,6 +5,7 @@
       </script>
    <% elsif current_user.premium? %>
       <h4>Downgrade to a standard account. We're sad to see you go!</h4>
+      <h5>Just a warning, all of your private wikis will now become public.</h5>
       <%= link_to "Cancel Premium", downgrade_charge_path, class: "btn btn-danger" %>></script>
    <% end %>
  <% end %>

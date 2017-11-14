@@ -8,15 +8,15 @@
 
 #Create Wikis
 
-50.times do
+10.times do
   Wiki.create!(
-    title: Faker::Hipster.sentence,
-    body: Faker::Hipster.paragraph
+    title: Faker::StarWars.character,
+    body: Faker::StarWars.quote
   )
   end
   wikis = Wiki.all
 
-10.times do
+5.times do
   User.create!(
     name: Faker::Name.name,
     email: Faker::Internet.unique.email,
