@@ -16,6 +16,7 @@ end
 group :development do
   # Use sqlite3 as the development database for Active Record
   gem 'sqlite3'
+  gem 'listen', '~> 3.0.5'
   gem 'web-console', '~> 2.0'
 end
 
@@ -51,8 +52,3 @@ gem 'stripe'
 gem 'figaro', '1.0'
 
 gem 'redcarpet'
-
-
-group :development do
-  gem 'listen', '~> 3.0.5'
-end

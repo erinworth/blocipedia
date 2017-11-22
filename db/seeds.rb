@@ -8,14 +8,6 @@
 
 #Create Wikis
 
-10.times do
-  Wiki.create!(
-    title: Faker::StarWars.character,
-    body: Faker::StarWars.quote
-  )
-  end
-  wikis = Wiki.all
-
 5.times do
   User.create!(
     name: Faker::Name.name,
@@ -24,6 +16,15 @@
   )
   end
   users = User.all
+
+  10.times do
+    Wiki.create!(
+      title: Faker::StarWars.character,
+      body: Faker::StarWars.quote,
+      user: users.sample
+    )
+    end
+    wikis = Wiki.all
 
 puts "Seed finished"
 puts "#{Wiki.count} wikis created"

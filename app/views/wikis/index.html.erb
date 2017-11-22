@@ -1,6 +1,5 @@
 <h1>Wikis</h1>
 <%= link_to "New", new_wiki_path(@wiki), class: 'btn btn-sq-sm btn-success' %>
-<% if current_user.admin? || current_user.premium? %>
 <% @wikis.each do |wiki| %>
 <div class="media">
     <div class="media-body">
@@ -10,14 +9,3 @@
     </div>
 </div>
  <% end %>
- <% elsif current_user.standard? %>
-  <% @public_wikis.each do |wiki| %>
-  <div class="media">
-    <div class="mediabody">
-      <div class="media-heading">
-        <p><% link_to wiki.title, wiki %></p>
-      </div>
-    </div>
-  </div>
-  <% end %>
-  <% end %>
